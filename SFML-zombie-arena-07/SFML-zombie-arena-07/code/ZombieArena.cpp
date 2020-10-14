@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include <SFML/Graphics.hpp>
+
+#include "ZombieArena.h"
 #include "Player.h"
 
 using namespace sf;
@@ -16,7 +18,7 @@ int main()
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
-	RenderWindow window(VideoMode(resolution.x, resolution.y), 
+	RenderWindow window(VideoMode(resolution.x, resolution.y),
 		"Zombie Arena", Style::Fullscreen);
 
 	// Create a an SFML View for the main action
@@ -38,6 +40,12 @@ int main()
 	// The boundaries of the arena
 	IntRect arena;
 
+	// Create the background
+	VertexArray background;
+	// Load the texture for our background vertex array
+	Texture textureBackground;
+	textureBackground.loadFromFile("graphics/background_sheet.png");
+
 	// The main game loop
 	while (window.isOpen())
 	{
@@ -52,7 +60,7 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::KeyPressed)
-			{									
+			{
 				// Pause a game while playing
 				if (event.key.code == Keyboard::Return &&
 					state == State::PLAYING)
@@ -84,7 +92,7 @@ int main()
 		}// End event polling
 
 
-		// Handle the player quitting
+		 // Handle the player quitting
 		if (Keyboard::isKeyPressed(Keyboard::Escape))
 		{
 			window.close();
@@ -132,7 +140,7 @@ int main()
 
 		}// End WASD while playing
 
-		// Handle the levelling up state
+		 // Handle the levelling up state
 		if (state == State::LEVELING_UP)
 		{
 			// Handle the player levelling up
@@ -165,9 +173,9 @@ int main()
 			{
 				state = State::PLAYING;
 			}
-			
+
 			if (state == State::PLAYING)
-			{			
+			{
 				// Prepare thelevel
 				// We will modify the next two lines later
 				arena.width = 500;
@@ -175,22 +183,23 @@ int main()
 				arena.left = 0;
 				arena.top = 0;
 
-				// We will modify this line of code later
-				int tileSize = 50;
-
+				// Pass the vertex array by reference 
+				// to the createBackground function
+				int tileSize = createBackground(background, arena);
+				
 				// Spawn the player in the middle of the arena
 				player.spawn(arena, resolution, tileSize);
-				
+
 				// Reset the clock so there isn't a frame jump
 				clock.restart();
 			}
 		}// End levelling up
 
-		/*
-		****************
-		UPDATE THE FRAME
-		****************
-		*/
+		 /*
+		 ****************
+		 UPDATE THE FRAME
+		 ****************
+		 */
 		if (state == State::PLAYING)
 		{
 			// Update the delta time
@@ -217,11 +226,11 @@ int main()
 			mainView.setCenter(player.getCenter());
 		}// End updating the scene
 
-		/*
-		**************
-		Draw the scene
-		**************
-		*/
+		 /*
+		 **************
+		 Draw the scene
+		 **************
+		 */
 
 		if (state == State::PLAYING)
 		{
@@ -230,6 +239,9 @@ int main()
 			// set the mainView to be displayed in the window
 			// And draw everything related to it
 			window.setView(mainView);
+
+			// Draw the background
+			window.draw(background, &textureBackground);
 
 			// Draw the player
 			window.draw(player.getSprite());

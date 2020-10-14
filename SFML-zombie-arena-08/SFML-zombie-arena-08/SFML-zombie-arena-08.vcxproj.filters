@@ -20,23 +20,5 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\ZombieArena.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\CreateBackground.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\ZombieArena.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

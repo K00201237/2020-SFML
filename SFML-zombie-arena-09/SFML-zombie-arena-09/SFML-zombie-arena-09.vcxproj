@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{bb18a851-96f0-482b-92a5-9f756a2e10fa}</ProjectGuid>
+    <ProjectGuid>{936f8d18-b839-4e74-8067-41810620cfe6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>sfml_zombie_arena_6</RootNamespace>
+    <RootNamespace>SFML_zombie_arena_09</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,15 +143,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\Player.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\ZombieArena.h" />
+    <ClInclude Include="code\Bullet.h" />
+    <ClInclude Include="code\Pickup.h" />
+    <ClInclude Include="code\Player.h" />
+    <ClInclude Include="code\TextureHolder.h" />
+    <ClInclude Include="code\Zombie.h" />
+    <ClInclude Include="code\ZombieArena.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\CreateBackground.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\Player.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 7\code\ZombieArena.cpp" />
+    <ClCompile Include="code\Bullet.cpp" />
+    <ClCompile Include="code\CreateBackground.cpp" />
+    <ClCompile Include="code\Pickup.cpp" />
+    <ClCompile Include="code\Player.cpp" />
+    <ClCompile Include="code\TextureHolder.cpp" />
+    <ClCompile Include="code\Zombie.cpp" />
+    <ClCompile Include="code\ZombieArena.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

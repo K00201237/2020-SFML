@@ -12,13 +12,13 @@ private:
 	const float CRAWLER_SPEED = 20;
 
 	// How tough is each zombie type
-	const float BLOATER_HEALTH = 10;
-	const float CHASER_HEALTH = 2;
-	const float CRAWLER_HEALTH = 6;
+	const float BLOATER_HEALTH = 5;
+	const float CHASER_HEALTH = 1;
+	const float CRAWLER_HEALTH = 3;
 
 	// Make each zombie vary its speed slightly
-	const int MAX_VARRIANCE = 10;
-	const int OFFSET = 201 - MAX_VARRIANCE;
+	const int MAX_VARRIANCE = 30;
+	const int OFFSET = 101 - MAX_VARRIANCE;
 
 	// Where is this zombie?
 	Vector2f m_Position;

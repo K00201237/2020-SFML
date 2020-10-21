@@ -6,8 +6,8 @@ using namespace sf;
 class Player
 {
 private:
-	const float START_SPEED = 200;
-	const float START_HEALTH = 10000;
+	const float START_SPEED = 300;
+	const float START_HEALTH = 200;
 
 	// Where is the player
 	Vector2f m_Position;
@@ -50,6 +50,9 @@ private:
 public:
 
 	Player();
+
+	// Call this at the end of every game
+	void resetPlayerStats();
 
 	void spawn(IntRect arena, Vector2f resolution, int tileSize);
 

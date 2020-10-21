@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{e41af91c-a668-4795-aeb6-18178cc52cda}</ProjectGuid>
+    <ProjectGuid>{ca9887d6-1849-4a1d-81f4-f9fbe2cef3eb}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SFML_zombie_arena_09</RootNamespace>
+    <RootNamespace>SFML_zombie_arena_10</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,24 +143,24 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Bullet.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Pickup.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Player.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\TextureHolder.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Zombie.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\ZombieArena.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Bullet.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Pickup.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Player.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\TextureHolder.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Zombie.h" />
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\ZombieArena.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Bullet.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\CreateBackground.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\CreateHorde.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Pickup.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Player.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\TextureHolder.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Zombie.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\ZombieArena.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Bullet.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\CreateBackground.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\CreateHorde.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Pickup.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Player.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\TextureHolder.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Zombie.cpp" />
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\ZombieArena.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

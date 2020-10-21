@@ -20,49 +20,49 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Bullet.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Pickup.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Pickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Player.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\TextureHolder.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\TextureHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Zombie.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Zombie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\ZombieArena.h">
+    <ClInclude Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\ZombieArena.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Bullet.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\CreateBackground.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\CreateBackground.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\CreateHorde.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\CreateHorde.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Pickup.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Pickup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Player.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\TextureHolder.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\TextureHolder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\Zombie.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\Zombie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 9\code\ZombieArena.cpp">
+    <ClCompile Include="..\..\Ex_Files_C_Plus_Plus_Programming_1\Exercise Files\Proj_02_Codes\Section 10\code\ZombieArena.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

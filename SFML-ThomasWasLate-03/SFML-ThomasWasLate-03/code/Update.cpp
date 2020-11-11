@@ -31,6 +31,9 @@ void Engine::update(float dtAsSeconds)
 
 		// Update Bob
 		m_Bob.update(dtAsSeconds);
+		Vector2f playerPosition(m_Bob.getCenter());
+		m_Enemy1.moveTo(dtAsSeconds, playerPosition);
+		m_Enemy2.moveTo(dtAsSeconds, playerPosition);
 
 		// Detect collisions and see if characters have reached the goal tile
 		// The second part of the if condition is only executed
@@ -47,16 +50,19 @@ void Engine::update(float dtAsSeconds)
 		{
 			// Run bobs collision detection
 			detectCollisions(m_Bob);
+			detectCollisions(m_Thomas);
+			detectCollisions(m_Enemy1);
+			detectCollisions(m_Enemy2);
 		}
 
 		// Let bob and thomas jump on each others heads
 		if (m_Bob.getFeet().intersects(m_Thomas.getHead()))
 		{
-			m_Bob.stopFalling(m_Thomas.getHead().top);
+			m_Bob.stopDown(m_Thomas.getHead().top);
 		}
 		else if (m_Thomas.getFeet().intersects(m_Bob.getHead()))
 		{
-			m_Thomas.stopFalling(m_Bob.getHead().top);
+			m_Thomas.stopDown(m_Bob.getHead().top);
 		}
 
 		// Count down the time the player has left
@@ -65,7 +71,7 @@ void Engine::update(float dtAsSeconds)
 		// Have Thomas and Bob run out of time?
 		if (m_TimeRemaining <= 0)
 		{
-			m_NewLevelRequired = true;
+			//m_NewLevelRequired = true;
 		}
 
 	}// End if playing
@@ -81,11 +87,12 @@ void Engine::update(float dtAsSeconds)
 		// Centre full screen around appropriate character
 		if (m_Character1)
 		{
-			m_MainView.setCenter(m_Thomas.getCenter());
+			m_MainView.setCenter(m_Bob.getCenter());
 		}
 		else
 		{
 			m_MainView.setCenter(m_Bob.getCenter());
 		}
+
 	}
 }

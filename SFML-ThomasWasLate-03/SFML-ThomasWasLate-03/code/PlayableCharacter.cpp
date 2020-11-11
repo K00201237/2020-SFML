@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "PlayableCharacter.h"
+#include <iostream>
+using namespace std;
+
 
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
@@ -15,6 +18,76 @@ void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 
 }
 
+void  PlayableCharacter::moveTo(float elapsedTime, Vector2f playerLocation)
+{
+	float playerX = playerLocation.x;
+	float playerY = playerLocation.y;
+	float speed = m_Speed / 2;
+	srand(time(0));
+	int mod = rand() % 100;
+	speed = mod;
+
+	// Update the enemy position variables
+	if (playerX > m_Position.x)
+	{
+		m_Position.x = m_Position.x +
+			speed * elapsedTime;
+	}
+
+	if (playerY > m_Position.y)
+	{
+		m_Position.y = m_Position.y +
+			speed * elapsedTime;
+	}
+
+	if (playerX < m_Position.x)
+	{
+		m_Position.x = m_Position.x -
+			speed * elapsedTime;
+	}
+
+	if (playerY < m_Position.y)
+	{
+		m_Position.y = m_Position.y -
+			speed * elapsedTime;
+	}
+	// Update the rect for all body parts
+
+	FloatRect r = getPosition();
+
+	// Feet
+	m_Feet.left = r.left + 3;
+	m_Feet.top = r.top + r.height - 1;
+	m_Feet.width = r.width - 6;
+	m_Feet.height = 1;
+
+	// Head
+	m_Head.left = r.left + 3;
+	//m_Head.top = r.top + (r.height * .3);
+	m_Head.top = r.top;
+	m_Head.width = r.width - 6;
+	m_Head.height = 1;
+
+	// Right
+	m_Right.left = r.left + r.width - 2;
+	m_Right.top = r.top + r.height * .35;
+	m_Right.width = 1;
+	m_Right.height = r.height * .3;
+
+	// Left
+	m_Left.left = r.left;
+	m_Left.top = r.top + r.height * .35;
+	m_Left.width = 1;
+	m_Left.height = r.height * .3;
+
+
+
+	m_Sprite.setPosition(m_Position);
+}
+
+
+
+
 void PlayableCharacter::update(float elapsedTime)
 {
 
@@ -26,6 +99,16 @@ void PlayableCharacter::update(float elapsedTime)
 	if (m_LeftPressed)
 	{
 		m_Position.x -= m_Speed * elapsedTime;
+	}
+
+	if (m_UpPressed)
+	{
+		m_Position.y += m_Speed * elapsedTime;
+	}
+
+	if (m_DownPressed)
+	{
+		m_Position.y -= m_Speed * elapsedTime;
 	}
 
 
@@ -66,10 +149,12 @@ void PlayableCharacter::update(float elapsedTime)
 	m_Feet.height = 1;
 
 	// Head
-	m_Head.left = r.left;
-	m_Head.top = r.top + (r.height * .3);
-	m_Head.width = r.width;
+	m_Head.left = r.left + 3;
+	//m_Head.top = r.top + (r.height * .3);
+	m_Head.top = r.top;
+	m_Head.width = r.width - 6;
 	m_Head.height = 1;
+
 
 	// Right
 	m_Right.left = r.left + r.width - 2;
@@ -79,7 +164,7 @@ void PlayableCharacter::update(float elapsedTime)
 
 	// Left
 	m_Left.left = r.left;
-	m_Left.top = r.top + r.height * .5;
+	m_Left.top = r.top + r.height * .35;
 	m_Left.width = 1;
 	m_Left.height = r.height * .3;
 
@@ -128,21 +213,34 @@ Sprite PlayableCharacter::getSprite()
 
 
 
-void PlayableCharacter::stopFalling(float position)
+void PlayableCharacter::stopDown(float position)
 {
 	m_Position.y = position - getPosition().height;
 	m_Sprite.setPosition(m_Position);
-	m_IsFalling = false;
+	
+}
+
+void PlayableCharacter::stopUp
+(float position)
+{
+	m_Position.y = position + getPosition().height;
+	m_Sprite.setPosition(m_Position);
+	
 }
 
 void PlayableCharacter::stopRight(float position)
+// reduce x by the position - m_Sprite.getGlobalBounds().width;
 {
-	
+	//cout << "Stop Right m_Position. x was " << m_Position.x;
+	//cout << "Stop Right m_Position. y was " << m_Position.y << "\n";
 	m_Position.x = position - m_Sprite.getGlobalBounds().width;
+	//cout << "Stop Right m_Position. x was updated to " << m_Position.x;
+	//cout << "Stop Right m_Position. y was updated to " << m_Position.y << "\n";
 	m_Sprite.setPosition(m_Position);
 }
 
 void PlayableCharacter::stopLeft(float position)
+// increment x by the width - m_Sprite.getGlobalBounds().width;
 {
 	m_Position.x = position + m_Sprite.getGlobalBounds().width;
 	m_Sprite.setPosition(m_Position);

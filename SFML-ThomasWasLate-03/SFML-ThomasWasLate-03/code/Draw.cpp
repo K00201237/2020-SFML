@@ -23,6 +23,8 @@ void Engine::draw()
 
 		// Draw thomas
 		m_Window.draw(m_Bob.getSprite());
+		m_Window.draw(m_Enemy1.getSprite());
+		m_Window.draw(m_Enemy2.getSprite());
 	}
 	else
 	{
@@ -46,6 +48,7 @@ void Engine::draw()
 		// Draw thomas
 		m_Window.draw(m_Thomas.getSprite());
 		
+
 		// Now draw Bob's side of the screen
 
 		// Switch to background view

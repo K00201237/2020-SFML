@@ -16,6 +16,8 @@ private:
 	// Thomas and his friend, Bob
 	Thomas m_Thomas;
 	Bob m_Bob;
+	Thomas m_Enemy1;
+	Thomas m_Enemy2;
 
 	// A class to manage all the levels
 	LevelManager m_LM;
@@ -24,7 +26,7 @@ private:
 	const int VERTS_IN_QUAD = 4;
 
 	// The force pushing the characters down
-	const int GRAVITY = 300;
+	const int GRAVITY = 0;
 
 	// A regular RenderWindow
 	RenderWindow m_Window;

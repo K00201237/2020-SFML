@@ -6,7 +6,7 @@ Thomas::Thomas()
 {
 	// Associate a texture with the sprite
 	m_Sprite = Sprite(TextureHolder::GetTexture(
-		"graphics/thomas.png"));
+		"graphics/tom.png"));
 
 	m_JumpDuration = .45;
 }
@@ -18,22 +18,23 @@ bool Thomas::handleInput()
 
 	if (Keyboard::isKeyPressed(Keyboard::W))
 	{
+		m_UpPressed = true;
 
-		// Start a jump if not already jumping
-		// but only if standing on a block (not falling)
-		if (!m_IsJumping && !m_IsFalling)
-		{
-			m_IsJumping = true;
-			m_TimeThisJump = 0;
-			m_JustJumped = true;
-		}
 	}
 	else
 	{
-		m_IsJumping = false;
-		m_IsFalling = true;
+		m_UpPressed = false;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::S))
+	{
+		m_DownPressed = true;
 
 	}
+	else
+	{
+		m_DownPressed = false;
+	}
+
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
 		m_LeftPressed = true;

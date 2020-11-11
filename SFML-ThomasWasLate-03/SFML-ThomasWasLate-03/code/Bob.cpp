@@ -6,7 +6,7 @@ Bob::Bob()
 {
 	// Associate a texture with the sprite
 	m_Sprite = Sprite(TextureHolder::GetTexture(
-		"graphics/bob.png"));
+		"graphics/player.png"));
 
 	m_JumpDuration = .25;
 }
@@ -17,23 +17,24 @@ bool Bob::handleInput()
 
 	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
-
-		// Start a jump if not already jumping
-		// but only if standing on a block (not falling)
-		if (!m_IsJumping && !m_IsFalling)
-		{
-			m_IsJumping = true;
-			m_TimeThisJump = 0;
-			m_JustJumped = true;
-		}
+		m_UpPressed = true;
 
 	}
 	else
 	{
-		m_IsJumping = false;
-		m_IsFalling = true;
+		m_UpPressed = false;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		m_DownPressed = true;
 
 	}
+	else
+	{
+		m_DownPressed = false;
+	}
+
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		m_LeftPressed = true;

@@ -19,6 +19,9 @@ protected:
 	// Which directions is the character currently moving in
 	bool m_LeftPressed;
 	bool m_RightPressed;
+	// 2020 nov 5th, up and down movewment
+	bool m_UpPressed;
+	bool m_DownPressed;
 
 	// How long has this jump lasted so far
 	float m_TimeThisJump;
@@ -68,9 +71,10 @@ public:
 	Sprite getSprite();
 
 	// Make the character stand firm
-	void stopFalling(float position);
+	void stopDown(float position);
 	void stopRight(float position);
 	void stopLeft(float position);
+	void stopUp(float position);
 	void stopJump();
 
 	// Where is the center of the character
@@ -78,4 +82,6 @@ public:
 
 	// We will call this function once every frame
 	void update(float elapsedTime);
+
+	void moveTo(float elapsedTime, Vector2f playerLocation);
 };

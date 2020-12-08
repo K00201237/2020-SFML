@@ -7,6 +7,7 @@ Player::Player()
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
+	
 
 	// Associate a texture with the sprite
 	// !!Watch this space!!

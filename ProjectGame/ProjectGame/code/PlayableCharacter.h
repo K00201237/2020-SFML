@@ -9,27 +9,15 @@ protected:
 	// Of course we will need a sprite
 	Sprite m_Sprite;
 
-	// How long does a jump last
-	float m_JumpDuration;
-
-	// Is character currently jumping or falling
-	bool m_IsJumping;
-	bool m_IsFalling;
 
 	// Which directions is the character currently moving in
 	bool m_LeftPressed;
 	bool m_RightPressed;
 
-	// How long has this jump lasted so far
-	float m_TimeThisJump;
 
-	// Has the player just initialted a jump
-	bool m_JustJumped = false;
 
 	// Private variables and functions come next
 private:
-	// What is the gravity
-	float m_Gravity;
 
 	// How fast is the character
 	float m_Speed = 400;
@@ -68,10 +56,9 @@ public:
 	Sprite getSprite();
 
 	// Make the character stand firm
-	void stopFalling(float position);
 	void stopRight(float position);
 	void stopLeft(float position);
-	void stopJump();
+
 
 	// Where is the center of the character
 	Vector2f getCenter();

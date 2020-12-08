@@ -7,8 +7,6 @@ void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 	m_Position.x = startPosition.x;
 	m_Position.y = startPosition.y;
 
-	// Initialize the gravity
-	m_Gravity = gravity;
 
 	// Move the sprite in to position
 	m_Sprite.setPosition(m_Position);
@@ -29,31 +27,6 @@ void PlayableCharacter::update(float elapsedTime)
 	}
 
 
-	// Handle Jumping
-	if (m_IsJumping)
-	{
-		// Update how long the jump has been going
-		m_TimeThisJump += elapsedTime;
-
-		// Is the jump going upwards
-		if (m_TimeThisJump < m_JumpDuration)
-		{
-			// Move up at twice gravity
-			m_Position.y -= m_Gravity * 2 * elapsedTime;
-		}
-		else
-		{
-			m_IsJumping = false;
-			m_IsFalling = true;
-		}
-
-	}
-
-	// Apply gravity
-	if (m_IsFalling)
-	{
-		m_Position.y += m_Gravity * elapsedTime;
-	}
 
 	// Update the rect for all body parts
 	FloatRect r = getPosition();
@@ -128,13 +101,6 @@ Sprite PlayableCharacter::getSprite()
 
 
 
-void PlayableCharacter::stopFalling(float position)
-{
-	m_Position.y = position - getPosition().height;
-	m_Sprite.setPosition(m_Position);
-	m_IsFalling = false;
-}
-
 void PlayableCharacter::stopRight(float position)
 {
 	
@@ -148,12 +114,7 @@ void PlayableCharacter::stopLeft(float position)
 	m_Sprite.setPosition(m_Position);
 }
 
-void PlayableCharacter::stopJump()
-{
-	// Stop a jump early 
-	m_IsJumping = false;
-	m_IsFalling = true;
-}
+
 
 
 

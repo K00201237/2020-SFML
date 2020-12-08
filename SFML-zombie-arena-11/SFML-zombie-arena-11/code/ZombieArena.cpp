@@ -63,10 +63,10 @@ int main()
 	// 100 bullets should do
 	Bullet bullets[100];
 	int currentBullet = 0;
-	int bulletsSpare = 60;
-	int bulletsInClip = 20;
-	int clipSize = 6;
-	float fireRate = 19;
+	int bulletsSpare = 80;
+	int bulletsInClip = 10;
+	int clipSize = 10;
+	float fireRate = 15;
 	// When was the fire button last pressed?
 	Time lastPressed;
 
@@ -80,6 +80,8 @@ int main()
 	// Create a couple of pickups
 	Pickup healthPickup(1);
 	Pickup ammoPickup(2);
+	Pickup shieldPickup(3);
+	Pickup minePickup(4);
 
 	// About the game
 	int score = 0;
@@ -189,6 +191,11 @@ int main()
 	RectangleShape healthBar;
 	healthBar.setFillColor(Color::Red);
 	healthBar.setPosition(450, 980);
+
+	// Shield bar
+	RectangleShape ShieldBar;
+	ShieldBar.setFillColor(Color::Blue);
+	ShieldBar.setPosition(450, 1050);
 		
 	// When did we last update the HUD?
 	int framesSinceLastHUDUpdate = 0;
@@ -239,6 +246,18 @@ int main()
 	Sound pickup;
 	pickup.setBuffer(pickupBuffer);
 
+	// Prepare the shield sound
+	SoundBuffer shieldBuffer;
+	shieldBuffer.loadFromFile("sound/shield.wav");
+	Sound shield;
+	shield.setBuffer(shieldBuffer);
+
+	// Prepare the mine sound
+	SoundBuffer mineExplodeBuffer;
+	mineExplodeBuffer.loadFromFile("sound/mineExplosion.wav");
+	Sound mineExplode;
+	mineExplode.setBuffer(mineExplodeBuffer);
+
 	// The main game loop
 	while (window.isOpen())
 	{
@@ -280,10 +299,10 @@ int main()
 
 					// Prepare the gun and ammo for next game
 					currentBullet = 0;
-					bulletsSpare = 60;
-					bulletsInClip = 20;
-					clipSize = 6;
-					fireRate = 20;
+					bulletsSpare = 80;
+					bulletsInClip = 10;
+					clipSize = 10;
+					fireRate = 15;
 
 					// Reset the player's stats
 					player.resetPlayerStats();
@@ -422,20 +441,33 @@ int main()
 
 			if (event.key.code == Keyboard::Num4)
 			{
-				// Increase speed
-				player.upgradeSpeed();
+				// Increase shield
+				player.upgradeShield();
 				state = State::PLAYING;
 			}
 
 			if (event.key.code == Keyboard::Num5)
 			{
-				healthPickup.upgrade();
+				// Increase speed
+				player.upgradeSpeed();
 				state = State::PLAYING;
 			}
 
 			if (event.key.code == Keyboard::Num6)
 			{
+				healthPickup.upgrade();
+				state = State::PLAYING;
+			}
+
+			if (event.key.code == Keyboard::Num7)
+			{
 				ammoPickup.upgrade();
+				state = State::PLAYING;
+			}
+
+			if (event.key.code == Keyboard::Num8)
+			{
+				shieldPickup.upgrade();
 				state = State::PLAYING;
 			}
 
@@ -461,6 +493,8 @@ int main()
 				// Configure the pick-ups
 				healthPickup.setArena(arena);
 				ammoPickup.setArena(arena);
+				shieldPickup.setArena(arena);
+				minePickup.setArena(arena);
 
 				// Create a horde of zombies
 				numZombies = 10 * wave;
@@ -532,6 +566,8 @@ int main()
 			// Update the pickups
 			healthPickup.update(dtAsSeconds);
 			ammoPickup.update(dtAsSeconds);
+			shieldPickup.update(dtAsSeconds);
+			minePickup.update(dtAsSeconds);
 
 			// Collision detection
 			// Have any zombies been shot?
@@ -609,6 +645,16 @@ int main()
 				
 			}
 
+			// Has the player touched shield pickup
+			if (player.getPosition().intersects
+			(shieldPickup.getPosition()) && shieldPickup.isSpawned())
+			{
+				player.increaseShieldLevel(shieldPickup.gotIt());
+				// Play a sound
+				shield.play();
+
+			}
+
 			// Has the player touched ammo pickup
 			if (player.getPosition().intersects
 				(ammoPickup.getPosition()) && ammoPickup.isSpawned())
@@ -619,8 +665,21 @@ int main()
 				
 			}
 
+			// Has the player touched mine pickup
+			if (player.getPosition().intersects
+			(minePickup.getPosition()) && minePickup.isSpawned())
+			{
+				player.decreaseHealthLevel(minePickup.gotIt());
+				// Play a sound
+				mineExplode.play();
+
+			}
+
 			// size up the health bar
 			healthBar.setSize(Vector2f(player.getHealth() * 3, 70));
+
+			// size up the shield bar
+			ShieldBar.setSize(Vector2f(player.getShield() * 3, 70));
 
 			// Increment the amount of time since the last HUD update
 			timeSinceLastUpdate += dt;
@@ -706,6 +765,14 @@ int main()
 			{
 				window.draw(healthPickup.getSprite());
 			}
+			if (shieldPickup.isSpawned())
+			{
+				window.draw(shieldPickup.getSprite());
+			}
+			if (minePickup.isSpawned())
+			{
+				window.draw(minePickup.getSprite());
+			}
 
 			//Draw the crosshair
 			window.draw(spriteCrosshair);
@@ -719,6 +786,7 @@ int main()
 			window.draw(scoreText);
 			window.draw(hiScoreText);
 			window.draw(healthBar);
+			window.draw(ShieldBar);
 			window.draw(waveNumberText);
 			window.draw(zombiesRemainingText);
 		}

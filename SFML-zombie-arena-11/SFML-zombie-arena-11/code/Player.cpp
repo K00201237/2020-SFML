@@ -7,6 +7,8 @@ Player::Player()
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
+	m_Shield = START_SHIELD;
+	m_MaxShield = START_SHIELD;
 
 	// Associate a texture with the sprite
 	// !!Watch this space!!
@@ -23,6 +25,9 @@ void Player::resetPlayerStats()
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
+	m_Shield = START_SHIELD;
+	m_MaxShield = START_SHIELD;
+
 }
 
 void Player::spawn(IntRect arena, Vector2f resolution, int tileSize)
@@ -53,6 +58,12 @@ Time Player::getLastHitTime()
 
 bool Player::hit(Time timeHit)
 {
+	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200 && m_Shield > 0)// 2 tenths of second
+	{
+		m_LastHit = timeHit;
+		m_Shield -= 10;
+		return true;
+	}
 	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)// 2 tenths of second
 	{
 		m_LastHit = timeHit;
@@ -64,6 +75,11 @@ bool Player::hit(Time timeHit)
 		return false;
 	}
 
+}
+
+bool Player::hitMine(Time timeHit)
+{
+	return false;
 }
 
 FloatRect Player::getPosition()
@@ -89,6 +105,11 @@ Sprite Player::getSprite()
 int Player::getHealth()
 {
 	return m_Health;
+}
+
+int Player::getShield()
+{
+	return m_Shield;
 }
 
 void Player::moveLeft()
@@ -200,6 +221,12 @@ void Player::upgradeHealth()
 
 }
 
+void Player::upgradeShield()
+{
+	// 20% max shield upgrade
+	m_MaxShield += (START_SHIELD * .2);
+}
+
 void Player::increaseHealthLevel(int amount)
 {
 	m_Health += amount;
@@ -208,6 +235,27 @@ void Player::increaseHealthLevel(int amount)
 	if (m_Health > m_MaxHealth)
 	{
 		m_Health = m_MaxHealth;
+	}
+}
+
+void Player::decreaseHealthLevel(int amount)
+{
+	m_Health = m_Health - 50;
+
+	if (m_Health < 1)
+	{
+		m_Health = 0;
+	}
+}
+
+void Player::increaseShieldLevel(int amount)
+{
+	m_Shield += amount;
+
+	// But not beyond the maximum
+	if (m_Shield > m_MaxShield)
+	{
+		m_Shield = m_MaxShield;
 	}
 }
 

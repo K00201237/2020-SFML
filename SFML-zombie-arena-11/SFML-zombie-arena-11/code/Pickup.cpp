@@ -17,13 +17,29 @@ Pickup::Pickup(int type)
 		m_Value = HEALTH_START_VALUE;
 
 	}
-	else
+	if (m_Type == 3)
+	{
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/shield.png"));
+
+		// How much is pickup worth
+		m_Value = SHIELD_START_VALUE;
+
+	}
+	if (m_Type == 2)
 	{
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/ammo_pickup.png"));
 
 		// How much is pickup worth
 		m_Value = AMMO_START_VALUE;
+	}
+
+	if (m_Type == 4)
+	{
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/mine.png"));
+
 	}
 
 	m_Sprite.setOrigin(25, 25);

@@ -14,7 +14,7 @@ void Engine::draw()
 		// Switch to background view
 		m_Window.setView(m_BGMainView);
 		// Draw the background
-		m_Window.draw(m_BackgroundSprite);
+		//m_Window.draw(m_BackgroundSprite);
 
 		// Draw the background, complete with shader effect
 		m_Window.draw(m_BackgroundSprite, &m_RippleShader);

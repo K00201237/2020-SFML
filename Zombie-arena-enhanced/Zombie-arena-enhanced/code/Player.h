@@ -45,6 +45,11 @@ private:
 	// Speed in pixels per second
 	float m_Speed;
 
+	// How much shield has the player gpt?
+	int m_Shield;
+	// What is the maximum shield a player can have?
+	int m_MaxShield;
+
 
 	// All our public functions will come next
 public:
@@ -77,6 +82,9 @@ public:
 	// How much health has the player currently got?
 	int getHealth();
 
+	// How much shield has the player currnetly got?
+	int getShield();
+
 	// The next four functions move the player
 	void moveLeft();
 
@@ -103,6 +111,9 @@ public:
 
 	// Give the player some health
 	void upgradeHealth();
+
+	// Give the player some shield
+	void upgradeShield();
 
 	// Increase the maximum amount of health the player can have
 	void increaseHealthLevel(int amount);

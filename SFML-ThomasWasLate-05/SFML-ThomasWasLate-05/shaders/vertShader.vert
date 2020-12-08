@@ -1,8 +1,8 @@
-#version 110
+#version 130
 
 //varying "out" variables to be used in the fragment shader
-varying vec4 vColor;
-varying vec2 vTexCoord;
+out vec4 vColor;
+out vec2 vTexCoord;
  
 void main() {
     vColor = gl_Color;

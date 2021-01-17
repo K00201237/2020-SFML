@@ -10,11 +10,13 @@ private:
 	const float BLOATER_SPEED = 90;
 	const float CHASER_SPEED = 120;
 	const float CRAWLER_SPEED = 30;
+	//const float EXPLODER_SPEED = 150;
 
 	// How tough is each zombie type
 	const float BLOATER_HEALTH = 10;
 	const float CHASER_HEALTH = 2;
 	const float CRAWLER_HEALTH = 6;
+	//const float EXPLODER_HEALTH = 1;
 
 	// Make each zombie vary its speed slightly
 	const int MAX_VARRIANCE = 30;
@@ -55,6 +57,8 @@ public:
 
 	// Update the zombie each frame
 	void update(float elapsedTime, Vector2f playerLocation);
+
+	int Zexploder;
 };
 
 

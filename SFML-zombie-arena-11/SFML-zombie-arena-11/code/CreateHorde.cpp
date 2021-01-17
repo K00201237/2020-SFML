@@ -46,9 +46,9 @@ Zombie* createHorde(int numZombies, IntRect arena)
 			break;
 		}
 
-		// Bloater, crawler or runner
+		// Bloater, crawler, runner or exploder
 		srand((int)time(0) * i * 2);
-		int type = (rand() % 3);
+		int type = (rand() % 4);  // Adujst type = to allow for four types of enemies
 
 		// Spawn the new zombie into the array
 		zombies[i].spawn(x, y, type, i);

@@ -38,7 +38,18 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Speed = 20;
 		m_Health = 3;
 		break;
+
+	case 3:
+		// Exploder
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/mine.png"));
+
+		m_Speed = 150;
+		m_Health = 1;
+		break;
 	}
+	
+	Zexploder = type = 3;
 
 	// Modify the speed to make the zombie unique
 	// Every zombie is unique. Create a speed modifier
@@ -133,3 +144,4 @@ void Zombie::update(float elapsedTime,
 
 
 }
+

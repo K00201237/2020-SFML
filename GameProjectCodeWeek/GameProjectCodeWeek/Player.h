@@ -11,9 +11,15 @@ protected:
 	bool p_leftPressed;
 	bool p_rightPressed;
 
+	float p_jumpDuration;
+	bool p_isJumping;
+	bool p_isFalling;
+	float p_timeThisJump;
+	bool p_justJumped = false;
+
 private:
 
-	float p_speed = 400;
+	float p_speed = 500;
 
 	Vector2f p_position;
 
@@ -23,6 +29,8 @@ private:
 	FloatRect p_left;
 
 	Texture p_texture;
+
+	float p_gravity;
 
 public:
 
@@ -40,7 +48,8 @@ public:
 
 	void stopRight(float position);
 	void stopLeft(float position);
-
+	void stopFalling(float position);
+	void stopJump();
 
 	Vector2f getCenter();
 

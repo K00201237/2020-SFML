@@ -17,7 +17,7 @@ Pickup::Pickup(int type)
 		m_Value = HEALTH_START_VALUE;
 
 	}
-	if (m_Type == 3)
+	if (m_Type == 3)                                    // ********************
 	{
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/shield.png"));
@@ -35,7 +35,7 @@ Pickup::Pickup(int type)
 		m_Value = AMMO_START_VALUE;
 	}
 
-	if (m_Type == 4)
+	if (m_Type == 4)                                  // ********************
 	{
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/mine.png"));

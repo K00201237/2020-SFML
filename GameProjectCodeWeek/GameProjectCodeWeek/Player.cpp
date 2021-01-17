@@ -7,6 +7,8 @@ void Player::spawn(Vector2f startPosition, float gravity)
 	p_position.y = startPosition.y;
 
 	p_sprite.setPosition(p_position);
+
+	p_gravity = gravity;
 }
 
 FloatRect Player::getPosition()
@@ -51,6 +53,19 @@ void Player::stopLeft(float position)
 	p_sprite.setPosition(p_position);
 }
 
+void Player::stopFalling(float position)
+{
+	p_position.y = position - getPosition().height;
+	p_sprite.setPosition(p_position);
+	p_isFalling = false;
+}
+
+void Player::stopJump()
+{
+	p_isJumping = false;
+	p_isFalling = true;
+}
+
 Vector2f Player::getCenter()
 {
 	return Vector2f(p_position.x + p_sprite.getGlobalBounds().width / 2, p_position.y + p_sprite.getGlobalBounds().height / 2);
@@ -66,6 +81,32 @@ void Player::update(float elapsedTime)
 	if (p_leftPressed)
 	{
 		p_position.x -= p_speed * elapsedTime;
+	}
+
+	// Handle Jumping
+	if (p_isJumping)
+	{
+		// Update how long the jump has been going
+		p_timeThisJump += elapsedTime;
+
+		// Is the jump going upwards
+		if (p_timeThisJump < p_jumpDuration)
+		{
+			// Move up at twice gravity
+			p_position.y -= p_gravity * 2 * elapsedTime;
+		}
+		else
+		{
+			p_isJumping = false;
+			p_isFalling = true;
+		}
+
+	}
+
+	// Apply gravity
+	if (p_isFalling)
+	{
+		p_position.y += p_gravity * elapsedTime;
 	}
 
 	FloatRect r = getPosition();

@@ -7,8 +7,8 @@ Player::Player()
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
-	m_Shield = START_SHIELD;
-	m_MaxShield = START_SHIELD;
+	m_Shield = START_SHIELD;         // ********************
+	m_MaxShield = START_SHIELD;      // ********************
 
 	// Associate a texture with the sprite
 	// !!Watch this space!!
@@ -25,8 +25,8 @@ void Player::resetPlayerStats()
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
 	m_MaxHealth = START_HEALTH;
-	m_Shield = START_SHIELD;
-	m_MaxShield = START_SHIELD;
+	m_Shield = START_SHIELD;      // ********************
+	m_MaxShield = START_SHIELD;   // ********************
 
 }
 
@@ -58,10 +58,10 @@ Time Player::getLastHitTime()
 
 bool Player::hit(Time timeHit)
 {
-	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200 && m_Shield > 0)// 2 tenths of second
+	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200 && m_Shield > 0)// 2 tenths of second    // ********************
 	{
 		m_LastHit = timeHit;
-		m_Shield -= 10;
+		m_Shield -= 10;    
 		return true;
 	}
 	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)// 2 tenths of second
@@ -77,7 +77,27 @@ bool Player::hit(Time timeHit)
 
 }
 
-bool Player::hitMine(Time timeHit)
+bool Player::hitExploder(Time timeHit)
+{
+	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200 && m_Shield > 0)// 2 tenths of second    // ********************
+	{
+		m_LastHit = timeHit;
+		m_Shield -= 10;
+		return true;
+	}
+	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)// 2 tenths of second
+	{
+		m_LastHit = timeHit;
+		m_Health -= 30;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Player::hitMine(Time timeHit)     // ********************
 {
 	return false;
 }
@@ -107,7 +127,7 @@ int Player::getHealth()
 	return m_Health;
 }
 
-int Player::getShield()
+int Player::getShield()    // ********************
 {
 	return m_Shield;
 }
@@ -221,7 +241,7 @@ void Player::upgradeHealth()
 
 }
 
-void Player::upgradeShield()
+void Player::upgradeShield()     // ********************
 {
 	// 20% max shield upgrade
 	m_MaxShield += (START_SHIELD * .2);
@@ -248,7 +268,7 @@ void Player::decreaseHealthLevel(int amount)
 	}
 }
 
-void Player::increaseShieldLevel(int amount)
+void Player::increaseShieldLevel(int amount)    // ********************
 {
 	m_Shield += amount;
 

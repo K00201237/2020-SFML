@@ -8,7 +8,7 @@ class Player
 private:
 	const float START_SPEED = 300;
 	const float START_HEALTH = 200;
-	const float START_SHIELD = 50;
+	const float START_SHIELD = 50;  // ********************
 
 	// Where is the player
 	Vector2f m_Position;
@@ -40,9 +40,9 @@ private:
 	// What is the maximum health the player can have
 	int m_MaxHealth;
 
-	// How much shield has the player got?
+	// How much shield has the player got?   // ********************
 	int m_Shield;
-	// What is the maximum shield the player can have
+	// What is the maximum shield the player can have   // ********************
 	int m_MaxShield;
 
 	// When was the player last hit
@@ -65,7 +65,10 @@ public:
 	// Handle the player getting hit by a zombie
 	bool hit(Time timeHit);
 
-	// Handle the player getting hit by a mine
+	// Handle the player getting hit by a exploder zombie   //******************
+	bool hitExploder(Time timeHit);
+
+	// Handle the player getting hit by a mine   // ********************
 	bool hitMine(Time timeHit);
 
 	// How long ago was the player last hit
@@ -86,7 +89,7 @@ public:
 	// How much health has the player currently got?
 	int getHealth();
 
-	// How much shield has the player currently got?
+	// How much shield has the player currently got?   // ********************
 	int getShield();
 
 	// The next four functions move the player
@@ -116,7 +119,7 @@ public:
 	// Give the player some health
 	void upgradeHealth();
 
-	// Give the player some shield
+	// Give the player some shield    // ********************
 	void upgradeShield();
 
 	// Increase the maximum amount of health the player can have
@@ -125,7 +128,7 @@ public:
 	// Decrease the maximum amount of health the player can have
 	void decreaseHealthLevel(int amount);
 
-	// Increase the maximum amount of shield the player can have
+	// Increase the maximum amount of shield the player can have   // ********************
 	void increaseShieldLevel(int amount);
 
 

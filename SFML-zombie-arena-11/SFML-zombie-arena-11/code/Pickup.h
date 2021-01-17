@@ -11,7 +11,7 @@ private:
 	const int AMMO_START_VALUE = 40;
 	const int START_WAIT_TIME = 10;
 	const int START_SECONDS_TO_LIVE = 5;
-	// Start value for shield
+	// Start value for shield                         // ********************
 	const int SHIELD_START_VALUE = 50;
 
 	// The sprite that represents this pickup

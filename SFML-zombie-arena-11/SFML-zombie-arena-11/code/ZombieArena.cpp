@@ -66,7 +66,7 @@ int main()
 	int bulletsSpare = 80;
 	int bulletsInClip = 10;
 	int clipSize = 10;
-	float fireRate = 15;
+	float fireRate = 5;
 	// When was the fire button last pressed?
 	Time lastPressed;
 
@@ -87,6 +87,8 @@ int main()
 	int score = 0;
 	int hiScore = 0;
 
+	int money = 0;  // ********************
+
 	// For the home/game over screen
 	Sprite spriteGameOver;
 	Texture textureGameOver = TextureHolder::GetTexture("graphics/background.png");
@@ -104,7 +106,7 @@ int main()
 
 	// Load the font
 	Font font;
-	font.loadFromFile("fonts/zombiecontrol.ttf");
+	font.loadFromFile("fonts/invasion.ttf");
 
 	// Paused
 	Text pausedText;
@@ -129,13 +131,17 @@ int main()
 	levelUpText.setFillColor(Color::White);
 	levelUpText.setPosition(150, 250);
 	std::stringstream levelUpStream;
+
 	levelUpStream <<
-		"1- Increased rate of fire" <<
-		"\n2- Increased clip size(next reload)" <<
-		"\n3- Increased max health" <<
-		"\n4- Increased run speed" <<
-		"\n5- More and better health pickups" <<
-		"\n6- More and better ammo pickups";
+		"            SHOP         "   <<
+		"\n1- Increased rate of fire: 10" <<
+		"\n2- Increased clip size(next reload): 10" <<
+		"\n3- Increased max health: 10" <<
+		"\n4- Increased run speed: 10" <<
+		"\n5- More and better health pickups: 10" <<
+		"\n6- More and better ammo pickups: 10"
+		"\n"
+		"\n  Press 'E' to begin next wave!";
 	levelUpText.setString(levelUpStream.str());
 
 	// Ammo
@@ -151,6 +157,13 @@ int main()
 	scoreText.setCharacterSize(55);
 	scoreText.setFillColor(Color::White);
 	scoreText.setPosition(20, 0);
+
+	// Money                    ********************
+	Text moneyText;
+	moneyText.setFont(font);
+	moneyText.setCharacterSize(55);
+	moneyText.setFillColor(Color::White);
+	moneyText.setPosition(500, 0);
 
 	// Load the high score from a text file/
 	std::ifstream inputFile("gamedata/scores.txt");
@@ -258,6 +271,12 @@ int main()
 	Sound mineExplode;  // ********************
 	mineExplode.setBuffer(mineExplodeBuffer);  // ********************
 
+	// Prepare the money sound
+	SoundBuffer moneyBuffer;  // ********************
+	moneyBuffer.loadFromFile("sound/money.wav");  // ********************
+	Sound moneySound;  // ********************
+	moneySound.setBuffer(moneyBuffer);  // ********************
+
 	// The main game loop
 	while (window.isOpen())
 	{
@@ -296,13 +315,14 @@ int main()
 					state = State::LEVELING_UP;
 					wave = 0;
 					score = 0;
+					money = 0; //  ********************
 
 					// Prepare the gun and ammo for next game
 					currentBullet = 0;
 					bulletsSpare = 80;
 					bulletsInClip = 10;
 					clipSize = 10;
-					fireRate = 15;
+					fireRate = 5;
 
 					// Reset the player's stats
 					player.resetPlayerStats();
@@ -418,58 +438,65 @@ int main()
 		if (state == State::LEVELING_UP)
 		{
 			// Handle the player levelling up
-			if (event.key.code == Keyboard::Num1)
+			if (event.key.code == Keyboard::Num1 && money >= 10)
 			{
 				// Increase fire rate
-				fireRate++;
-				state = State::PLAYING;
+				fireRate = fireRate + 5;
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num2)
+			if (event.key.code == Keyboard::Num2 && money >= 10)
 			{
 				// Increase clip size
-				clipSize += clipSize;
-				state = State::PLAYING;
+				clipSize = clipSize + 10;   // ********************
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num3)
+			if (event.key.code == Keyboard::Num3 && money >= 10)
 			{
 				// Increase health
 				player.upgradeHealth();
-				state = State::PLAYING;
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num4)  // ********************
+			if (event.key.code == Keyboard::Num4 && money >= 10)  // ********************
 			{
-				// Increase shield
-				player.upgradeShield();
-				state = State::PLAYING;
-			}
-
-			if (event.key.code == Keyboard::Num5)
-			{
-				// Increase speed
+				// Increase Speed
 				player.upgradeSpeed();
-				state = State::PLAYING;
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num6)
+			if (event.key.code == Keyboard::Num5 && money >= 10)
 			{
+				// Increase health pickups
 				healthPickup.upgrade();
-				state = State::PLAYING;
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num7)
+			if (event.key.code == Keyboard::Num6 && money >= 10)
 			{
 				ammoPickup.upgrade();
+				money = money - 10;
+				moneySound.play();
+				//state = State::PLAYING;
+			}
+
+			if (event.key.code == Keyboard::E)
+			{
+				//ammoPickup.upgrade();
 				state = State::PLAYING;
 			}
 
-			if (event.key.code == Keyboard::Num8)  // ********************
-			{
-				shieldPickup.upgrade();
-				state = State::PLAYING;
-			}
 
 			if (state == State::PLAYING)
 			{
@@ -590,6 +617,7 @@ int main()
 							if (zombies[j].hit()) {
 								// Not just a hit but a kill too
 								score += 10;
+								money++;  //   ********************
 								if (score >= hiScore)
 								{
 									hiScore = score;
@@ -694,6 +722,7 @@ int main()
 				// Update game HUD text
 				std::stringstream ssAmmo;
 				std::stringstream ssScore;
+				std::stringstream ssMoney;  //  ********************
 				std::stringstream ssHiScore;
 				std::stringstream ssWave;
 				std::stringstream ssZombiesAlive;
@@ -705,6 +734,10 @@ int main()
 				// Update the score text
 				ssScore << "Score:" << score;
 				scoreText.setString(ssScore.str());
+
+				// Update the money text       ********************
+				ssMoney << "Money:" << money;
+				moneyText.setString(ssMoney.str());
 
 				// Update the high score text
 				ssHiScore << "Hi Score:" << hiScore;
@@ -786,6 +819,7 @@ int main()
 			window.draw(spriteAmmoIcon);
 			window.draw(ammoText);
 			window.draw(scoreText);
+			window.draw(moneyText);       //  *******************
 			window.draw(hiScoreText);
 			window.draw(healthBar);
 			window.draw(ShieldBar);       // ********************
@@ -797,6 +831,7 @@ int main()
 		{
 			window.draw(spriteGameOver);
 			window.draw(levelUpText);
+			window.draw(moneyText);  //  ********************
 		}
 
 		if (state == State::PAUSED)
@@ -809,6 +844,7 @@ int main()
 			window.draw(spriteGameOver);
 			window.draw(gameOverText);
 			window.draw(scoreText);
+			window.draw(moneyText);   //  ********************
 			window.draw(hiScoreText);
 		}
 

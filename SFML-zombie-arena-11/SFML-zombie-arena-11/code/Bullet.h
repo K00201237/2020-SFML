@@ -24,9 +24,12 @@ private:
 	float m_BulletDistanceX;
 	float m_BulletDistanceY;
 
+
+
 	// Where is this bullet headed to?
 	float m_XTarget;
 	float m_YTarget;
+
 
 	// Some boundaries so the bullet doesn't fly forever
 	float m_MaxX;

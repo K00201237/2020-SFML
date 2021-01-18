@@ -231,20 +231,21 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 void Player::upgradeSpeed()
 {
 	// 20% speed upgrade
-	m_Speed += (START_SPEED * .2);
+	m_Speed = m_Speed + 10;   // ********************
+	
 }
 
 void Player::upgradeHealth()
 {
 	// 20% max health upgrade
-	m_MaxHealth += (START_HEALTH * .2);
+	m_MaxHealth = m_MaxHealth + 50;
 
 }
 
 void Player::upgradeShield()     // ********************
 {
 	// 20% max shield upgrade
-	m_MaxShield += (START_SHIELD * .2);
+	m_MaxShield = m_MaxShield + 30;
 }
 
 void Player::increaseHealthLevel(int amount)

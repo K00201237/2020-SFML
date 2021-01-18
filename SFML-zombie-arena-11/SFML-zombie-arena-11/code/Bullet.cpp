@@ -31,22 +31,29 @@ void Bullet::shoot(float startX, float startY,
 	// Set the "speed" horizontally and vertically
 	m_BulletDistanceY = ratioXY;
 	m_BulletDistanceX = ratioXY * gradient;
+
+
+	
 	
 	// Point the bullet in the right direction
 	if (targetX < startX)
 	{
 		m_BulletDistanceX *= -1;
+
 	}
 
 	if (targetY < startY)
 	{
 		m_BulletDistanceY *= -1;
+
 	}
 
 	// Finally, assign the results to the
 	// member variables
 	m_XTarget = targetX;
 	m_YTarget = targetY;
+
+
 
 	// Set a max range of 1000 pixels
 	float range = 1000;
@@ -85,6 +92,8 @@ void Bullet::update(float elapsedTime)
 	// Update the bullet position variables
 	m_Position.x += m_BulletDistanceX * elapsedTime;
 	m_Position.y += m_BulletDistanceY * elapsedTime;
+
+
 
 	// Move the bullet
 	m_BulletShape.setPosition(m_Position);
